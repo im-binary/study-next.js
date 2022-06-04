@@ -1,21 +1,20 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 
-export default function Home() {
-  const [movie, setMovie] = useState();
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(`/api/movies`);
-      const { results } = await response.json();
-      setMovie(results);
-    })();
-  }, []);
+export default function Home({ results }) {
+  // const [movies, setMovies] = useState();
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await fetch(`/api/movies`);
+  //     const { results } = await response.json();
+  //     setMovies(results);
+  //   })();
+  // }, []);
   return (
     <div className='container'>
       <Seo title='Home' />
-      {!movie && <h4>Loading ...</h4>}
-      {movie?.map((movie) => (
+      {/* {!movies && <h4>Loading ...</h4>} */}
+      {results?.map((movie) => (
         <div className='movie' key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
@@ -44,4 +43,18 @@ export default function Home() {
       `}</style>
     </div>
   );
+}
+
+// 서버에서 실행됨
+// 데이터가 유효할 때 화면이 보이는 것이 좋을 때
+// API가 완료된 후 정보 보여주기
+// ! getServerSideProps 이름 변경 안 됨
+export async function getServerSideProps() {
+  const response = await fetch(`http://localhost:3000/api/movies`);
+  const { results } = await response.json();
+  return {
+    props: {
+      results,
+    },
+  };
 }
