@@ -5,6 +5,11 @@ export default function Home() {
     <div>
       <NavBar />
       <h1>Hi!</h1>
+      <style jsx>{`
+        h1 {
+          color: blue;
+        }
+      `}</style>
     </div>
   );
 }
