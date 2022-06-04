@@ -1,7 +1,11 @@
+import Head from "next/head";
+import Seo from "../components/Seo";
+
 export default function About() {
   return (
     <div>
-      <h1>Hello</h1>
+      <Seo title='About' />
+      <h1>About</h1>
     </div>
   );
 }
