@@ -18,6 +18,17 @@ next.js가 react.js를 백엔드에서 동작 시켜서 페이지를 미리 만�
 react.js가 로딩되었을 때, 기본적으로 존재하는 것들과 연결이 되어 일반적인 react.js 앱이 된다.
 
 - next.js 앱 내에서 페이지를 네비게이트할 때 사용해야만 하는 특정 컴포넌트가 존재
+
   - `<a>` 태그 단독 사용 안 됨 -> 전체 페이지 새로고침
   - `<Link>` 태그로 `<a>` 태그 감싸서 사용
   - `<Link>` 태그는 href에 지정한 경로로 이동하는 일만 함
+
+- jsx style
+
+  - `<style jsx>`는 style을 컴포넌트 내로 한정함
+
+- next.js 는 렌더링되기 전 `_app.js` 파일을 본다
+  - next.js는 \_app.js를 불러와서 그 안에 있는 함수를 호출한다.
+  - {Component, pageProps} 2개의 인자가 함수 안에 들어감
+  - 페이지나 컴포넌트 안에서 css 파일을 import 하고 싶다면 반드시 module이어야만 한다.
+  - \_app.js의 컴포넌트 안 에서는 import 가능
