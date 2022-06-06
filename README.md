@@ -28,7 +28,13 @@ react.js가 로딩되었을 때, 기본적으로 존재하는 것들과 연결�
   - `<style jsx>`는 style을 컴포넌트 내로 한정함
 
 - next.js 는 렌더링되기 전 `_app.js` 파일을 본다
+
   - next.js는 \_app.js를 불러와서 그 안에 있는 함수를 호출한다.
   - {Component, pageProps} 2개의 인자가 함수 안에 들어감
   - 페이지나 컴포넌트 안에서 css 파일을 import 하고 싶다면 반드시 module이어야만 한다.
   - \_app.js의 컴포넌트 안 에서는 import 가능
+
+- server side render
+  - 사용자가 볼 데이터들이 HTML로 먼저 와 있어서 사용자가 loding ... 바 같은 거 안 볼 수 있다.
+  - `getServerSideProps` 함수는 export 한 후 `props` 객체를 반환하는 모양으로 작성할 수 있다.
+  - 백엔드에서 일을 다 처리하지 않는 이상 화면에 안 보임
